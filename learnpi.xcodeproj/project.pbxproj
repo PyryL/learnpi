@@ -14,6 +14,7 @@
 		443754532B62A211005A3117 /* learnpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754522B62A211005A3117 /* learnpiTests.swift */; };
 		4437545D2B62A211005A3117 /* learnpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437545C2B62A211005A3117 /* learnpiUITests.swift */; };
 		4437545F2B62A211005A3117 /* learnpiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437545E2B62A211005A3117 /* learnpiUITestsLaunchTests.swift */; };
+		4437546C2B62AEED005A3117 /* PiDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437546B2B62AEED005A3117 /* PiDigits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		443754582B62A211005A3117 /* learnpiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = learnpiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4437545C2B62A211005A3117 /* learnpiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learnpiUITests.swift; sourceTree = "<group>"; };
 		4437545E2B62A211005A3117 /* learnpiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learnpiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4437546B2B62AEED005A3117 /* PiDigits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiDigits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				443754412B62A20F005A3117 /* learnpiApp.swift */,
 				443754432B62A20F005A3117 /* ContentView.swift */,
+				4437546B2B62AEED005A3117 /* PiDigits.swift */,
 				443754452B62A210005A3117 /* Assets.xcassets */,
 				443754472B62A210005A3117 /* Preview Content */,
 			);
@@ -259,6 +262,7 @@
 			files = (
 				443754442B62A20F005A3117 /* ContentView.swift in Sources */,
 				443754422B62A20F005A3117 /* learnpiApp.swift in Sources */,
+				4437546C2B62AEED005A3117 /* PiDigits.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
