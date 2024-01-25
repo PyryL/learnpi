@@ -9,6 +9,13 @@ import SwiftUI
 
 struct KeyboardView: View {
     @ObservedObject var manager: Manager
+    private let hapticFeedback = UIImpactFeedbackGenerator(style: .rigid)
+    
+    private func keyboardTap(_ key: KeyboardKey?) {
+        guard let key,
+              manager.typeDigit(key) else { return }
+        hapticFeedback.impactOccurred()
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -33,24 +40,15 @@ struct KeyboardView: View {
                 keyView(key: .decimal)
             }
         }
+        .padding(2)
+        .onAppear { hapticFeedback.prepare() }
     }
     
     @ViewBuilder private func keyView(key: KeyboardKey?) -> some View {
-        Button(action: {
-            guard let key else { return }
-            manager.typeDigit(key)
-        }) {
+        Button(action: { keyboardTap(key) }) {
             Text(key?.label ?? "")
-                .font(.system(size: 20, design: .monospaced))
-                .frame(height: 70)
-                .frame(maxWidth: .infinity)
-                .background(Color(uiColor: .systemBackground))
-                .overlay(RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.primary, lineWidth: 2)
-                    .padding(1))
-                .clipShape(RoundedRectangle(cornerRadius: 5))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(KeyboardButtonStyle())
         .padding(2)
         .opacity(key == nil ? 0 : 1)
     }
@@ -66,6 +64,20 @@ struct KeyboardView: View {
                 return "."
             }
         }
+    }
+}
+
+fileprivate struct KeyboardButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 20, design: .monospaced))
+            .frame(height: 70)
+            .frame(maxWidth: .infinity)
+            .background(Color(uiColor: configuration.isPressed ? .systemGray : .systemBackground))
+            .overlay(RoundedRectangle(cornerRadius: 5)
+                .stroke(Color.primary, lineWidth: 2)
+                .padding(1))
+            .clipShape(RoundedRectangle(cornerRadius: 5))
     }
 }
 

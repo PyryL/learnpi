@@ -17,8 +17,8 @@ class Manager: ObservableObject {
         return digitOffset - 1
     }
     
-    public func typeDigit(_ key: KeyboardView.KeyboardKey) {
-        guard digitOffset < PiDigits.digits.endIndex else { return }
+    public func typeDigit(_ key: KeyboardView.KeyboardKey) -> Bool {
+        guard digitOffset < PiDigits.digits.endIndex else { return false }
         
         let correctDigit = PiDigits.digits[digitOffset]
         let isCorrect: Bool
@@ -32,5 +32,7 @@ class Manager: ObservableObject {
         if isCorrect {
             digitOffset += 1
         }
+        
+        return isCorrect
     }
 }
