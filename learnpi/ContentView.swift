@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                DigitView(manager: manager)
+                DigitsView(manager: manager)
                 Spacer()
                 KeyboardView(manager: manager)
             }

@@ -7,10 +7,28 @@
 
 import SwiftUI
 
-struct DigitView: View {
+struct DigitsView: View {
     @ObservedObject var manager: Manager
+    @State private var showUpcomingDigits: Bool = false
     
-    private func getDigit(offset: Int) -> String {
+    var body: some View {
+        HStack {
+            ForEach(-3..<2) { offset in
+                DigitView(manager: manager, offset: offset, showUpcomingDigits: showUpcomingDigits)
+            }
+        }
+        .background(Color.white.opacity(0.0001))
+        .onTapGesture { showUpcomingDigits.toggle() }
+        .padding([.horizontal, .top])
+    }
+}
+
+fileprivate struct DigitView: View {
+    @ObservedObject var manager: Manager
+    var offset: Int
+    var showUpcomingDigits: Bool
+    
+    private var digit: String {
         guard manager.digitOffset+offset >= 0,
               manager.digitOffset+offset < PiDigits.digits.endIndex else { return "-" }
         let digit = PiDigits.digits[manager.digitOffset+offset]
@@ -18,25 +36,35 @@ struct DigitView: View {
         return "\(digit)"
     }
     
-    var body: some View {
-        HStack {
-            digitView(offset: -3)
-            digitView(offset: -2)
-            digitView(offset: -1)
-            digitView(offset: 0)
-            digitView(offset: 1)
+    private var opacity: CGFloat {
+        if digit == "-" {
+            return 0
+        } else if offset == -1 {
+            return 1
+        } else if !showUpcomingDigits, offset >= 0 {
+            return 0
         }
-        .padding([.horizontal, .top])
+        return 0.5
     }
     
-    @ViewBuilder private func digitView(offset: Int) -> some View {
-        Text("\(getDigit(offset: offset))")
+    var body: some View {
+        Text(digit)
             .font(.system(size: CGFloat(40-5*abs(offset+1)), design: .monospaced))
             .frame(maxWidth: .infinity)
-            .opacity(getDigit(offset: offset) == "-" ? 0 : offset == -1 ? 1 : 0.5)
+            .opacity(opacity)
+            .overlay(overlayIcon)
+    }
+    
+    @ViewBuilder private var overlayIcon: some View {
+        if !showUpcomingDigits, offset == 0 {
+            Image(systemName: "eye.slash")
+                .font(.system(size: 20))
+                .foregroundStyle(.tertiary)
+                .offset(x: 30, y: 0)
+        }
     }
 }
 
 #Preview {
-    DigitView(manager: Manager())
+    DigitsView(manager: Manager())
 }
