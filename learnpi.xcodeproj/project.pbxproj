@@ -18,6 +18,7 @@
 		4437546E2B62BB17005A3117 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437546D2B62BB17005A3117 /* Manager.swift */; };
 		443754702B62BB2B005A3117 /* DigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437546F2B62BB2B005A3117 /* DigitView.swift */; };
 		443754722B62BB4B005A3117 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754712B62BB4B005A3117 /* KeyboardView.swift */; };
+		443754742B62BF30005A3117 /* CounterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754732B62BF30005A3117 /* CounterBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		4437546D2B62BB17005A3117 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		4437546F2B62BB2B005A3117 /* DigitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitView.swift; sourceTree = "<group>"; };
 		443754712B62BB4B005A3117 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		443754732B62BF30005A3117 /* CounterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				443754432B62A20F005A3117 /* ContentView.swift */,
 				4437546D2B62BB17005A3117 /* Manager.swift */,
 				4437546F2B62BB2B005A3117 /* DigitView.swift */,
+				443754732B62BF30005A3117 /* CounterBarView.swift */,
 				443754712B62BB4B005A3117 /* KeyboardView.swift */,
 				4437546B2B62AEED005A3117 /* PiDigits.swift */,
 				443754452B62A210005A3117 /* Assets.xcassets */,
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443754742B62BF30005A3117 /* CounterBarView.swift in Sources */,
 				443754702B62BB2B005A3117 /* DigitView.swift in Sources */,
 				443754442B62A20F005A3117 /* ContentView.swift in Sources */,
 				443754422B62A20F005A3117 /* learnpiApp.swift in Sources */,

@@ -15,6 +15,7 @@ struct ContentView: View {
             VStack {
                 DigitsView(manager: manager)
                 Spacer()
+                CounterBarView(manager: manager)
                 KeyboardView(manager: manager)
             }
             .background(Color(uiColor: .secondarySystemBackground))

@@ -10,6 +10,13 @@ import Foundation
 class Manager: ObservableObject {
     @Published private(set) var digitOffset: Int = 0
     
+    public var digitCount: Int {
+        if digitOffset < 2 {
+            return digitOffset
+        }
+        return digitOffset - 1
+    }
+    
     public func typeDigit(_ key: KeyboardView.KeyboardKey) {
         guard digitOffset < PiDigits.digits.endIndex else { return }
         
