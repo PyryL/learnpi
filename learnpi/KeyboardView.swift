@@ -55,21 +55,16 @@ fileprivate struct KeyboardButton: View {
     var key: KeyboardView.KeyboardKey?
     private let hapticFeedback = UIImpactFeedbackGenerator(style: .rigid)
     
-    @State private var backgroundEffect: Color? = nil
+    @GestureState private var tapStatus: Bool = false
+    @State private var isCorrectTap: Bool = true
     
     private func tapped() {
         guard let key else { return }
-        let isCorrect = manager.typeDigit(key)
+        isCorrectTap = manager.typeDigit(key)
         
-        if isCorrect {
+        if isCorrectTap {
             hapticFeedback.impactOccurred()
         }
-        
-        backgroundEffect = isCorrect ? Color(uiColor: .lightGray) : .red
-    }
-    
-    private func tapEnded() {
-        backgroundEffect = nil
     }
     
     var body: some View {
@@ -77,20 +72,21 @@ fileprivate struct KeyboardButton: View {
             .font(.system(size: 20, design: .monospaced))
             .frame(height: 70)
             .frame(maxWidth: .infinity)
-            .background(backgroundEffect == nil ? Color(uiColor: .systemBackground) : backgroundEffect)
+            .background(!tapStatus ? Color(uiColor: .systemBackground) : isCorrectTap ? Color(uiColor: .lightGray) : Color.red)
             .overlay(RoundedRectangle(cornerRadius: 5)
                 .stroke(Color.primary, lineWidth: 2)
                 .padding(1))
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .padding(2)
             .opacity(key == nil ? 0 : 1)
-            .animation(.easeInOut(duration: 0.04), value: backgroundEffect)
             .gesture(LongPressGesture(minimumDuration: .leastNonzeroMagnitude)
-                .onChanged { value in
-                    tapped()
-                }
-                .onEnded { value in
-                    tapEnded()
+                .updating($tapStatus) { value, state, transaction in
+                    state = value
+                    if value {
+                        DispatchQueue.main.async {
+                            tapped()
+                        }
+                    }
                 })
             .onAppear { hapticFeedback.prepare() }
     }
