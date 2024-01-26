@@ -35,4 +35,8 @@ class Manager: ObservableObject {
         
         return isCorrect
     }
+    
+    public func restart() {
+        digitOffset = 0
+    }
 }

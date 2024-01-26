@@ -21,6 +21,13 @@ struct ContentView: View {
             .background(Color(uiColor: .secondarySystemBackground))
             .navigationTitle("Learn π")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: manager.restart) {
+                        Label("Restart", systemImage: "arrow.counterclockwise")
+                    }
+                }
+            }
         }
     }
 }
