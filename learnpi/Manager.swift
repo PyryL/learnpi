@@ -14,6 +14,8 @@ class Manager: ObservableObject {
     
     @Published private(set) var startDate: Date? = nil
     
+    @Published private(set) var isGameOver: Bool = false
+    
     public var digitCount: Int {
         if digitOffset < 2 {
             return digitOffset
@@ -27,7 +29,8 @@ class Manager: ObservableObject {
     }
     
     public func typeDigit(_ key: PiCharacter) -> Bool {
-        guard let correctDigit = PiDigits.digit(digitOffset) else {
+        guard let correctDigit = PiDigits.digit(digitOffset),
+              !isGameOver else {
             return false
         }
         
@@ -41,12 +44,17 @@ class Manager: ObservableObject {
             startDate = .now
         }
         
+        if !isCorrect, mode == .test {
+            isGameOver = true
+        }
+        
         return isCorrect
     }
     
     public func restart() {
         digitOffset = 0
         startDate = nil
+        isGameOver = false
     }
 }
 

@@ -11,15 +11,22 @@ struct DigitsView: View {
     @ObservedObject var manager: Manager
     @State private var showUpcomingDigits: Bool = false
     
+    var isUpcomingDigitsShowAvailable: Bool {
+        manager.mode == .practise || manager.isGameOver
+    }
+    
     var body: some View {
         HStack {
             ForEach(-3..<2) { offset in
-                DigitView(manager: manager, offset: offset, showUpcomingDigits: showUpcomingDigits)
+                DigitView(manager: manager,
+                          offset: offset,
+                          showUpcomingDigits: showUpcomingDigits,
+                          isUpcomingDigitsShowAvailable: isUpcomingDigitsShowAvailable)
             }
         }
         .background(Color.white.opacity(0.0001))
         .onTapGesture {
-            if manager.mode == .practise {
+            if isUpcomingDigitsShowAvailable {
                 showUpcomingDigits.toggle()
             }
         }
@@ -36,6 +43,7 @@ fileprivate struct DigitView: View {
     @ObservedObject var manager: Manager
     var offset: Int
     var showUpcomingDigits: Bool
+    var isUpcomingDigitsShowAvailable: Bool
     
     private var digit: String {
         if manager.digitOffset+offset == -2 { return "π" }
@@ -73,7 +81,7 @@ fileprivate struct DigitView: View {
     }
     
     @ViewBuilder private var overlayIcon: some View {
-        if !showUpcomingDigits, offset == 0, manager.mode == .practise {
+        if !showUpcomingDigits, offset == 0, isUpcomingDigitsShowAvailable {
             Image(systemName: "eye.slash")
                 .font(.system(size: 20))
                 .foregroundStyle(.tertiary)

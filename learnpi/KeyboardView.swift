@@ -66,6 +66,9 @@ fileprivate struct KeyboardButton: View {
     }
     
     private var background: Color {
+        if manager.isGameOver {
+            return Color.red
+        }
         if !tapStatus {
             return Color(uiColor: .systemBackground)
         }
