@@ -18,7 +18,16 @@ struct DigitsView: View {
             }
         }
         .background(Color.white.opacity(0.0001))
-        .onTapGesture { showUpcomingDigits.toggle() }
+        .onTapGesture {
+            if manager.mode == .practise {
+                showUpcomingDigits.toggle()
+            }
+        }
+        .onChange(of: manager.mode) {
+            if manager.mode != .practise {
+                showUpcomingDigits = false
+            }
+        }
         .padding([.horizontal, .top])
     }
 }
@@ -64,7 +73,7 @@ fileprivate struct DigitView: View {
     }
     
     @ViewBuilder private var overlayIcon: some View {
-        if !showUpcomingDigits, offset == 0 {
+        if !showUpcomingDigits, offset == 0, manager.mode == .practise {
             Image(systemName: "eye.slash")
                 .font(.system(size: 20))
                 .foregroundStyle(.tertiary)

@@ -8,6 +8,8 @@
 import Foundation
 
 class Manager: ObservableObject {
+    @Published private(set) var mode: GameMode = .practise
+    
     @Published private(set) var digitOffset: Int = 0
     
     @Published private(set) var startDate: Date? = nil
@@ -17,6 +19,11 @@ class Manager: ObservableObject {
             return digitOffset
         }
         return digitOffset - 1
+    }
+    
+    public func setMode(_ mode: GameMode) {
+        guard digitOffset == 0 else { return }
+        self.mode = mode
     }
     
     public func typeDigit(_ key: PiCharacter) -> Bool {
@@ -41,4 +48,8 @@ class Manager: ObservableObject {
         digitOffset = 0
         startDate = nil
     }
+}
+
+enum GameMode {
+    case practise, test
 }

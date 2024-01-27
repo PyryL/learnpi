@@ -22,6 +22,17 @@ struct ContentView: View {
             .navigationTitle("Learn π")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Picker("Mode", selection: Binding(get: {
+                        manager.mode
+                    }, set: {
+                        manager.setMode($0)
+                    })) {
+                        Text("Practise").tag(GameMode.practise)
+                        Text("Test").tag(GameMode.test)
+                    }
+                    .disabled(manager.digitOffset != 0)
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: manager.restart) {
                         Label("Restart", systemImage: "arrow.counterclockwise")
