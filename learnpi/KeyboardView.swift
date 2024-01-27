@@ -13,46 +13,33 @@ struct KeyboardView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                KeyboardButton(manager: manager, key: .num(7))
-                KeyboardButton(manager: manager, key: .num(8))
-                KeyboardButton(manager: manager, key: .num(9))
+                KeyboardButton(manager: manager, key: .digit(7))
+                KeyboardButton(manager: manager, key: .digit(8))
+                KeyboardButton(manager: manager, key: .digit(9))
             }
             HStack(spacing: 0) {
-                KeyboardButton(manager: manager, key: .num(4))
-                KeyboardButton(manager: manager, key: .num(5))
-                KeyboardButton(manager: manager, key: .num(6))
+                KeyboardButton(manager: manager, key: .digit(4))
+                KeyboardButton(manager: manager, key: .digit(5))
+                KeyboardButton(manager: manager, key: .digit(6))
             }
             HStack(spacing: 0) {
-                KeyboardButton(manager: manager, key: .num(1))
-                KeyboardButton(manager: manager, key: .num(2))
-                KeyboardButton(manager: manager, key: .num(3))
+                KeyboardButton(manager: manager, key: .digit(1))
+                KeyboardButton(manager: manager, key: .digit(2))
+                KeyboardButton(manager: manager, key: .digit(3))
             }
             HStack(spacing: 0) {
                 KeyboardButton(manager: manager, key: nil)
-                KeyboardButton(manager: manager, key: .num(0))
+                KeyboardButton(manager: manager, key: .digit(0))
                 KeyboardButton(manager: manager, key: .decimal)
             }
         }
         .padding(2)
     }
-    
-    enum KeyboardKey {
-        case num(Int), decimal
-        
-        var label: String {
-            switch self {
-            case .num(let value):
-                return "\(value)"
-            case .decimal:
-                return "."
-            }
-        }
-    }
 }
 
 fileprivate struct KeyboardButton: View {
     @ObservedObject var manager: Manager
-    var key: KeyboardView.KeyboardKey?
+    var key: PiCharacter?
     private let hapticFeedback = UIImpactFeedbackGenerator(style: .rigid)
     
     @GestureState private var tapStatus: Bool = false
@@ -67,8 +54,19 @@ fileprivate struct KeyboardButton: View {
         }
     }
     
+    private var label: String {
+        switch key {
+        case .digit(let value):
+            return "\(value)"
+        case .decimal:
+            return "."
+        case nil:
+            return ""
+        }
+    }
+    
     var body: some View {
-        Text(key?.label ?? "")
+        Text(label)
             .font(.system(size: 20, design: .monospaced))
             .frame(height: 70)
             .frame(maxWidth: .infinity)

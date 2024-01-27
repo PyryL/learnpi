@@ -17,17 +17,12 @@ class Manager: ObservableObject {
         return digitOffset - 1
     }
     
-    public func typeDigit(_ key: KeyboardView.KeyboardKey) -> Bool {
-        guard digitOffset < PiDigits.digits.endIndex else { return false }
-        
-        let correctDigit = PiDigits.digits[digitOffset]
-        let isCorrect: Bool
-        switch key {
-        case .num(let value):
-            isCorrect = value == correctDigit
-        case .decimal:
-            isCorrect = correctDigit == -1
+    public func typeDigit(_ key: PiCharacter) -> Bool {
+        guard let correctDigit = PiDigits.digit(digitOffset) else {
+            return false
         }
+        
+        let isCorrect: Bool = key == correctDigit
         
         if isCorrect {
             digitOffset += 1

@@ -31,13 +31,17 @@ fileprivate struct DigitView: View {
     private var digit: String {
         if manager.digitOffset+offset == -2 { return "π" }
         if manager.digitOffset+offset == -1 { return "≈" }
-
-        guard manager.digitOffset+offset >= 0,
-              manager.digitOffset+offset < PiDigits.digits.endIndex else { return "-" }
-
-        let digit = PiDigits.digits[manager.digitOffset+offset]
-        if digit == -1 { return "." }
-        return "\(digit)"
+        
+        guard let digit = PiDigits.digit(manager.digitOffset+offset) else {
+            return "-"
+        }
+        
+        switch digit {
+        case .digit(let value):
+            return "\(value)"
+        case .decimal:
+            return "."
+        }
     }
     
     private var opacity: CGFloat {
