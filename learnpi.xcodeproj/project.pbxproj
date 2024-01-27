@@ -11,7 +11,7 @@
 		443754442B62A20F005A3117 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754432B62A20F005A3117 /* ContentView.swift */; };
 		443754462B62A210005A3117 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443754452B62A210005A3117 /* Assets.xcassets */; };
 		443754492B62A210005A3117 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 443754482B62A210005A3117 /* Preview Assets.xcassets */; };
-		443754532B62A211005A3117 /* learnpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754522B62A211005A3117 /* learnpiTests.swift */; };
+		443754532B62A211005A3117 /* DurationFormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754522B62A211005A3117 /* DurationFormatterTest.swift */; };
 		4437545D2B62A211005A3117 /* learnpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437545C2B62A211005A3117 /* learnpiUITests.swift */; };
 		4437545F2B62A211005A3117 /* learnpiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437545E2B62A211005A3117 /* learnpiUITestsLaunchTests.swift */; };
 		4437546C2B62AEED005A3117 /* PiDigits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437546B2B62AEED005A3117 /* PiDigits.swift */; };
@@ -19,6 +19,8 @@
 		443754702B62BB2B005A3117 /* DigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437546F2B62BB2B005A3117 /* DigitView.swift */; };
 		443754722B62BB4B005A3117 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754712B62BB4B005A3117 /* KeyboardView.swift */; };
 		443754742B62BF30005A3117 /* CounterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443754732B62BF30005A3117 /* CounterBarView.swift */; };
+		444F393E2B6537BC000CC817 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F393D2B6537BC000CC817 /* DurationFormatter.swift */; };
+		444F393F2B65381E000CC817 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F393D2B6537BC000CC817 /* DurationFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +48,7 @@
 		443754452B62A210005A3117 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		443754482B62A210005A3117 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4437544E2B62A211005A3117 /* learnpiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = learnpiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		443754522B62A211005A3117 /* learnpiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learnpiTests.swift; sourceTree = "<group>"; };
+		443754522B62A211005A3117 /* DurationFormatterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatterTest.swift; sourceTree = "<group>"; };
 		443754582B62A211005A3117 /* learnpiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = learnpiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4437545C2B62A211005A3117 /* learnpiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learnpiUITests.swift; sourceTree = "<group>"; };
 		4437545E2B62A211005A3117 /* learnpiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learnpiUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		4437546F2B62BB2B005A3117 /* DigitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitView.swift; sourceTree = "<group>"; };
 		443754712B62BB4B005A3117 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		443754732B62BF30005A3117 /* CounterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBarView.swift; sourceTree = "<group>"; };
+		444F393D2B6537BC000CC817 /* DurationFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,7 @@
 				443754732B62BF30005A3117 /* CounterBarView.swift */,
 				443754712B62BB4B005A3117 /* KeyboardView.swift */,
 				4437546B2B62AEED005A3117 /* PiDigits.swift */,
+				444F393D2B6537BC000CC817 /* DurationFormatter.swift */,
 				443754452B62A210005A3117 /* Assets.xcassets */,
 				443754472B62A210005A3117 /* Preview Content */,
 			);
@@ -130,7 +134,7 @@
 		443754512B62A211005A3117 /* learnpiTests */ = {
 			isa = PBXGroup;
 			children = (
-				443754522B62A211005A3117 /* learnpiTests.swift */,
+				443754522B62A211005A3117 /* DurationFormatterTest.swift */,
 			);
 			path = learnpiTests;
 			sourceTree = "<group>";
@@ -278,6 +282,7 @@
 				443754702B62BB2B005A3117 /* DigitView.swift in Sources */,
 				443754442B62A20F005A3117 /* ContentView.swift in Sources */,
 				443754422B62A20F005A3117 /* learnpiApp.swift in Sources */,
+				444F393E2B6537BC000CC817 /* DurationFormatter.swift in Sources */,
 				443754722B62BB4B005A3117 /* KeyboardView.swift in Sources */,
 				4437546C2B62AEED005A3117 /* PiDigits.swift in Sources */,
 				4437546E2B62BB17005A3117 /* Manager.swift in Sources */,
@@ -288,7 +293,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				443754532B62A211005A3117 /* learnpiTests.swift in Sources */,
+				444F393F2B65381E000CC817 /* DurationFormatter.swift in Sources */,
+				443754532B62A211005A3117 /* DurationFormatterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

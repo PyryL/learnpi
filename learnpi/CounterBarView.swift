@@ -12,11 +12,30 @@ struct CounterBarView: View {
     
     var body: some View {
         HStack {
-            Text("Digit: \(manager.digitCount)")
+            Label("\(manager.digitCount)", systemImage: "number.circle")
             Spacer()
-            // TODO: timer
+            TimerView(manager: manager)
         }
         .padding(.horizontal)
+    }
+}
+
+fileprivate struct TimerView: View {
+    @ObservedObject var manager: Manager
+    @State var formattedDuration: String = ""
+    
+    private func calculateLabel() {
+        let startDate = manager.startDate ?? .now
+        let duration = -startDate.timeIntervalSinceNow
+        formattedDuration = DurationFormatter.format(duration)
+    }
+    
+    var body: some View {
+        Label(formattedDuration, systemImage: "timer.circle")
+            .onChange(of: manager.digitOffset) { calculateLabel() }
+            .onChange(of: manager.startDate) { calculateLabel() }
+            .onTapGesture { calculateLabel() }
+            .onAppear(perform: calculateLabel)
     }
 }
 

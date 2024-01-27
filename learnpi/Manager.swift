@@ -10,6 +10,8 @@ import Foundation
 class Manager: ObservableObject {
     @Published private(set) var digitOffset: Int = 0
     
+    @Published private(set) var startDate: Date? = nil
+    
     public var digitCount: Int {
         if digitOffset < 2 {
             return digitOffset
@@ -28,10 +30,15 @@ class Manager: ObservableObject {
             digitOffset += 1
         }
         
+        if isCorrect, startDate == nil {
+            startDate = .now
+        }
+        
         return isCorrect
     }
     
     public func restart() {
         digitOffset = 0
+        startDate = nil
     }
 }
