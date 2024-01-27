@@ -29,7 +29,11 @@ final class DurationFormatterTests: XCTestCase {
         XCTAssertEqual(DurationFormatter.format(747.5381931), "12:27.5")
     }
     
+    func testNoPaddingZeroWhenLessThanMinute() {
+        XCTAssertEqual(DurationFormatter.format(8.461892), "8.5")
+    }
+    
     func testZero() {
-        XCTAssertEqual(DurationFormatter.format(0), "00.0")
+        XCTAssertEqual(DurationFormatter.format(0), "0.0")
     }
 }

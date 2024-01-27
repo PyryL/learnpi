@@ -18,9 +18,11 @@ class DurationFormatter {
         
         if minutes > 0 {
             result += "\(minutes):"
+            result += String(format: "%02d", seconds)
+        } else {
+            result += "\(seconds)"
         }
         
-        result += String(format: "%02d", seconds)
         result += ".\(fraction)"
         
         return result
