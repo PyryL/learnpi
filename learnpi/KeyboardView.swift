@@ -65,14 +65,24 @@ fileprivate struct KeyboardButton: View {
         }
     }
     
+    private var background: Color {
+        if !tapStatus {
+            return Color(uiColor: .systemBackground)
+        }
+        if isCorrectTap {
+            return Color(uiColor: .systemGray3)
+        }
+        return Color.red
+    }
+    
     var body: some View {
         Text(label)
             .font(.system(size: 20, design: .monospaced))
             .frame(height: 70)
             .frame(maxWidth: .infinity)
-            .background(!tapStatus ? Color(uiColor: .systemBackground) : isCorrectTap ? Color(uiColor: .lightGray) : Color.red)
+            .background(background)
             .overlay(RoundedRectangle(cornerRadius: 5)
-                .stroke(Color.primary, lineWidth: 2)
+                .stroke(Color.accentColor, lineWidth: 2)
                 .padding(1))
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .padding(2)
