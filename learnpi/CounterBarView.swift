@@ -14,7 +14,9 @@ struct CounterBarView: View {
         HStack {
             Label("\(manager.digitCount)", systemImage: "number.circle")
             Spacer()
-            TimerView(manager: manager)
+            if manager.mode == .test {
+                TimerView(manager: manager)
+            }
         }
         .padding(.horizontal)
     }
@@ -34,7 +36,6 @@ fileprivate struct TimerView: View {
         Label(formattedDuration, systemImage: "timer.circle")
             .onChange(of: manager.digitOffset) { calculateLabel() }
             .onChange(of: manager.startDate) { calculateLabel() }
-            .onTapGesture { calculateLabel() }
             .onAppear(perform: calculateLabel)
     }
 }
