@@ -67,7 +67,7 @@ fileprivate struct KeyboardButton: View {
     
     private var background: Color {
         if manager.isGameOver {
-            return Color.red
+            return Color.incorrectRed
         }
         if !tapStatus {
             return Color(uiColor: .systemBackground)
@@ -75,7 +75,7 @@ fileprivate struct KeyboardButton: View {
         if isCorrectTap {
             return Color(uiColor: .systemGray3)
         }
-        return Color.red
+        return Color.incorrectRed
     }
     
     var body: some View {
